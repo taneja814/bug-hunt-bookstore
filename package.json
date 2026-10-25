@@ -1,0 +1,15 @@
+{
+  "name": "bug-hunt-bookstore",
+  "version": "1.0.0",
+  "description": "Bug Hunt workshop: find and fix the bug in this full-stack bookstore app.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node --watch server.js",
+    "test": "node tests/check.js",
+    "submit": "git add -A && (git commit -m \"My fix\" || true) && git push"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "pg": "^8.12.0"
+  }
+}

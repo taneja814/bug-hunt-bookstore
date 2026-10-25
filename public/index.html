@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Bug Hunt Bookstore</title>
+  <style>
+    body { font-family: system-ui, sans-serif; max-width: 760px; margin: 2rem auto; padding: 0 1rem; color: #1f2937; }
+    h1 { font-size: 1.5rem; }
+    .controls { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; margin-bottom: 0.5rem; }
+    input[type=search], select { padding: 0.4rem; font: inherit; }
+    table { width: 100%; border-collapse: collapse; margin: 0.75rem 0; }
+    th, td { text-align: left; padding: 0.5rem; border-bottom: 1px solid #e5e7eb; }
+    th { background: #f3f4f6; }
+    .pager { display: flex; align-items: center; gap: 1rem; }
+    button { padding: 0.35rem 0.8rem; border: 1px solid #9ca3af; background: #fff; border-radius: 6px; cursor: pointer; }
+    button:disabled { opacity: 0.4; cursor: not-allowed; }
+    #error, #msg { color: #b91c1c; min-height: 1.2em; }
+    .box { margin-top: 1.5rem; padding: 1rem; background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 8px; }
+    .box h2 { font-size: 1.05rem; margin: 0 0 0.5rem; }
+    .box textarea { width: 100%; box-sizing: border-box; min-height: 60px; padding: 0.5rem; font: inherit; }
+    #hint-reply { margin-top: 0.75rem; white-space: pre-wrap; }
+    #hint-left { color: #6b7280; font-size: 0.9rem; margin-left: 0.5rem; }
+  </style>
+</head>
+<body>
+  <h1>Bug Hunt Bookstore</h1>
+
+  <div class="controls">
+    <input type="search" id="q" placeholder="Search titles" />
+    <button id="search-btn">Search</button>
+    <label>Sort
+      <select id="sort">
+        <option value="id">Default</option>
+        <option value="title">Title</option>
+        <option value="price">Price (low to high)</option>
+      </select>
+    </label>
+    <label>Per page
+      <select id="size">
+        <option>3</option>
+        <option>5</option>
+        <option>10</option>
+      </select>
+    </label>
+  </div>
+
+  <p id="error"></p>
+  <table>
+    <thead><tr><th>#</th><th>Title</th><th>Author</th><th>Price</th><th>In stock</th><th></th></tr></thead>
+    <tbody id="books"></tbody>
+  </table>
+  <div class="pager">
+    <button id="prev">Previous</button>
+    <span id="status"></span>
+    <button id="next">Next</button>
+  </div>
+  <p id="msg"></p>
+
+  <div class="box">
+    <h2>Your cart</h2>
+    <div id="cart-items">Nothing yet.</div>
+    <p>Total: <strong id="cart-total">0.00</strong>
+      <button id="cart-clear" style="margin-left:0.5rem">Clear</button></p>
+  </div>
+
+  <div class="box">
+    <h2>Stuck? Ask the hint bot</h2>
+    <p style="margin:0 0 0.5rem;color:#6b7280;font-size:0.9rem">You get 5 hints. They guide you, they won't give the answer.</p>
+    <textarea id="hint-q" placeholder="Which ticket? What have you tried?"></textarea>
+    <div style="margin-top:0.5rem">
+      <button id="hint-btn">Get a hint</button>
+      <span id="hint-left"></span>
+    </div>
+    <div id="hint-reply"></div>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>

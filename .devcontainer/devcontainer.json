@@ -1,0 +1,24 @@
+{
+  "name": "Bug Hunt Bookstore",
+  "dockerComposeFile": "docker-compose.yml",
+  "service": "app",
+  "workspaceFolder": "/workspaces/bug-hunt",
+  "forwardPorts": [3000],
+  "portsAttributes": {
+    "3000": { "label": "Bookstore", "onAutoForward": "openPreview" }
+  },
+  "postCreateCommand": "npm install",
+  "postStartCommand": "nohup npm start > /tmp/server.log 2>&1 &",
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "chat.disableAIFeatures": true,
+        "github.copilot.enable": { "*": false },
+        "editor.inlineSuggest.enabled": false,
+        "editor.quickSuggestions": { "other": true, "comments": false, "strings": false },
+        "workbench.startupEditor": "none"
+      },
+      "extensions": ["dbaeumer.vscode-eslint", "ckolkman.vscode-postgres"]
+    }
+  }
+}
